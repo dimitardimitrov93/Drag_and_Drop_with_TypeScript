@@ -15,5 +15,11 @@
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.5.4"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": true
   }
 }
