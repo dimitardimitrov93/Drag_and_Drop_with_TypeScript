@@ -125,11 +125,11 @@ class ProjectItem extends Component {
         return this.project.people > 1 ? 'people' : 'person';
     }
     dragStartHandler(event) {
+        console.log(event);
+    }
+    dragEndHandler(event) {
         event.dataTransfer.setData('text/plain', this.project.id);
         event.dataTransfer.effectAllowed = 'move';
-    }
-    dragEndHandler(_) {
-        console.log('DragEnd');
     }
     configure() {
         this.element.addEventListener('dragstart', this.dragStartHandler);
@@ -144,6 +144,9 @@ class ProjectItem extends Component {
 __decorate([
     autobind
 ], ProjectItem.prototype, "dragStartHandler", null);
+__decorate([
+    autobind
+], ProjectItem.prototype, "dragEndHandler", null);
 class ProjectList extends Component {
     constructor(type) {
         super('project-list', 'app', false, `${type}-projects`);
@@ -179,7 +182,9 @@ class ProjectList extends Component {
                 if (this.type === 'active') {
                     return project.status === ProjectStatus.Active;
                 }
-                return project.status === ProjectStatus.Finished;
+                else {
+                    return project.status === ProjectStatus.Finished;
+                }
             });
             this.assignedProjects = relevantProjects;
             this.renderProjects();
@@ -269,4 +274,4 @@ __decorate([
 const projectInput = new ProjectInput();
 const activeProjectList = new ProjectList('active');
 const finishedProjectList = new ProjectList('finished');
-//# sourceMappingURL=app.js.map
+//# sourceMappingURL=app1.js.map
